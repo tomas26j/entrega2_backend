@@ -1,1 +1,1 @@
-{"id": 0,"title": "title1","price": 100,"thumnail": "url.com/ejemplo"}
+{"id": 0,"title": "Rum - Captain Morgan","price": 600,"thumbnail": "url.com/rum"}

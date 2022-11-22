@@ -1,4 +1,4 @@
-const fs = require('fs'); // Modulo necesario de Node
+const fs = require('fs');
 //const { Console } = require('console');
 //const { inherits } = require('util');
 
@@ -98,11 +98,14 @@ class Container{
 
         try {
             fileData = await fs.promises.readFile(this.filePath, 'utf-8');
-            parsedData = JSON.parse(fileData);  //console.log(parsedData);  // --Debug
+            parsedData = JSON.parse(fileData);
 
-            filtered = parsedData.filter(function (parsedData){ return parsedData.id == number.toString();});
+            filtered = parsedData.filter(function (parsedData){ return parsedData.id == number.toString();})
+            if(filtered.length = 0) {console.error(`That number doesn't exist`); return null;}
 
-            console.log('OBJETO SOLICITADO: ' + filtered);
+            else{
+                console.log('OBJETO SOLICITADO: ' + filtered);
+            }
         }catch (err){console.error('No se pudo filtrar un objeto, ERROR: ' + err); throw (err);}
 
     }
@@ -113,7 +116,7 @@ class Container{
         try {
             fileData = await fs.promises.readFile(this.filePath, 'utf-8')
             console.log(`FILE DATA: \n${fileData}`);
-           
+            return fileData;
         }catch (err){throw (err);}
     }
 
@@ -190,24 +193,4 @@ const ejemplo = './exampleObject';
 //setTimeout(container.deleteById, 9000, 6);
 
 //setTimeout(container.deleteAll, 10000);
-
-
-
-
-
-
-
-
-/*
-console.log(container.getById(5));
-console.log(container.getById(8));
-console.log(container.getById(3));
-console.log(container.getById(15));
-*/
-
-
-
-//setTimeout(container.save, 5000, ejemplo);
-
-
 
